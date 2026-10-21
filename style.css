@@ -1,0 +1,1208 @@
+
+/* ==========================================
+   1. CSS VARIABLES & RESET
+========================================== */
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #f3f4f6;
+    --text-color: #1f2937;
+    --font-main: 'Inter', sans-serif;
+    --spacing: 1.5rem;
+
+    --primary-hover: #1d4ed8;
+    --primary-light: #eff6ff;
+    --primary-border: #dbeafe;
+    --text-light: #6b7280;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --success-color: #16a34a;
+    --footer-bg: #111827;
+
+    --radius: 16px;
+    --shadow: 0 8px 24px rgba(31, 41, 55, 0.06);
+    --shadow-hover: 0 18px 40px rgba(31, 41, 55, 0.12);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 4px;
+}
+
+::selection {
+    color: var(--white);
+    background: var(--primary-color);
+}
+
+
+/* ==========================================
+   2. HEADER & NAVIGATION
+========================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(14px);
+}
+
+.header-container {
+    width: min(1200px, calc(100% - 48px));
+    min-height: 84px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+    color: var(--white);
+    background: var(--primary-color);
+
+    font-size: 25px;
+    font-weight: 800;
+
+    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.logo-text strong {
+    color: var(--primary-color);
+}
+
+.logo-text small {
+    margin-top: 4px;
+    color: var(--text-light);
+
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-link {
+    position: relative;
+    padding: 8px 0;
+
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.header-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 12px 18px;
+    border-radius: 10px;
+
+    color: var(--white);
+    background: var(--primary-color);
+
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    transition: var(--transition);
+}
+
+.header-cta:hover,
+.header-cta:focus-visible {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+
+/* ==========================================
+   3. HERO SECTION
+========================================== */
+
+.hero-section {
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 40%,
+            rgba(37, 99, 235, 0.10),
+            transparent 32%
+        ),
+        linear-gradient(135deg, #f8faff, var(--white));
+}
+
+.hero-container {
+    width: min(1200px, calc(100% - 48px));
+    min-height: 570px;
+    margin: 0 auto;
+    padding: 75px 0;
+
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: 65px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 25px;
+    padding: 9px 14px;
+
+    border: 1px solid var(--primary-border);
+    border-radius: 50px;
+
+    color: var(--primary-color);
+    background: var(--primary-light);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    background: var(--success-color);
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+}
+
+.hero-content h1 {
+    margin-bottom: 22px;
+
+    font-size: clamp(36px, 4.4vw, 60px);
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.15;
+}
+
+.hero-content h1 span {
+    display: block;
+    color: var(--primary-color);
+}
+
+/* Giữ hiệu ứng Animate.css cho tiêu đề Hero */
+.hero-content h1.animate__animated {
+    --animate-duration: 1s;
+    --animate-delay: 0.15s;
+}
+
+.hero-description {
+    max-width: 510px;
+    margin-bottom: 30px;
+
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 35px;
+}
+
+.btn {
+    min-height: 50px;
+    padding: 14px 23px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    color: var(--white);
+    background: var(--primary-color);
+    box-shadow: 0 7px 18px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    color: var(--white);
+    background: var(--primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(37, 99, 235, 0.28);
+}
+
+.btn-outline {
+    color: var(--text-color);
+    background: var(--white);
+    border-color: var(--border-color);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.hero-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+.hero-benefits p {
+    color: var(--text-light);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.hero-benefits p::first-letter {
+    color: var(--success-color);
+}
+
+.hero-visual {
+    position: relative;
+    min-width: 0;
+    padding: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 30px 70px rgba(37, 99, 235, 0.12);
+}
+
+.hero-image {
+    height: 380px;
+    border-radius: 20px;
+    object-position: center;
+}
+
+.floating-label {
+    position: absolute;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+
+    background: var(--white);
+    box-shadow: var(--shadow);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.label-top {
+    top: 45px;
+    left: -25px;
+}
+
+.label-bottom {
+    right: -20px;
+    bottom: 45px;
+}
+
+
+/* ==========================================
+   4. BENEFITS SECTION
+========================================== */
+
+.benefits-section {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 35px 0;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 25px;
+
+    border-bottom: 1px solid var(--border-color);
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.benefit-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+    background: var(--primary-light);
+
+    font-size: 22px;
+}
+
+.benefit-item h3 {
+    margin-bottom: 3px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.benefit-item p {
+    color: var(--text-light);
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   5. PRODUCTS SECTION
+========================================== */
+
+.products-section {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 90px 0;
+}
+
+.section-heading {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.section-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    color: var(--primary-color);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2,
+.about-content h2 {
+    margin-bottom: 14px;
+
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    line-height: 1.3;
+}
+
+.section-heading > p {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Danh mục sản phẩm */
+.category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 38px;
+}
+
+.category-link {
+    padding: 10px 17px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+
+    color: var(--text-light);
+    background: var(--white);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.category-link:hover,
+.category-link:focus-visible,
+.category-link.selected {
+    color: var(--white);
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Lưới sản phẩm */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* Thẻ sản phẩm */
+.product-card {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+
+    background: var(--white);
+    box-shadow: 0 4px 14px rgba(31, 41, 55, 0.025);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-border);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Ảnh sản phẩm */
+.product-image {
+    position: relative;
+    overflow: hidden;
+    background: var(--secondary-color);
+}
+
+.product-image img {
+    height: 230px;
+    padding: 12px;
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.06);
+}
+
+/* Nhãn sản phẩm */
+.product-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 1;
+
+    padding: 6px 10px;
+    border-radius: 6px;
+
+    color: var(--white);
+    background: var(--primary-color);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.tag-new {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.tag-sale {
+    color: #9a3412;
+    background: #ffedd5;
+}
+
+/* Thông tin sản phẩm */
+.product-info {
+    padding: 20px 17px;
+}
+
+.product-category {
+    margin-bottom: 8px;
+
+    color: var(--primary-color);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.product-info h3 {
+    min-height: 48px;
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.7;
+}
+
+.product-description {
+    min-height: 42px;
+    margin-bottom: 20px;
+
+    color: var(--text-light);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* Giá và nút mua */
+.product-bottom {
+    padding-top: 15px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    border-top: 1px solid var(--border-color);
+}
+
+.product-price {
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.btn-buy {
+    padding: 9px 11px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    border-radius: 8px;
+    color: var(--white);
+    background: var(--primary-color);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+.btn-buy:hover,
+.btn-buy:focus-visible {
+    color: var(--white);
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.2);
+}
+
+.product-note {
+    margin-top: 25px;
+    color: var(--text-light);
+    font-size: 11px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   6. ABOUT SECTION
+========================================== */
+
+.about-section {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto 90px;
+    padding: 55px;
+
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    gap: 55px;
+
+    border: 1px solid var(--primary-border);
+    border-radius: 24px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary-light),
+        #f8faff
+    );
+}
+
+.about-content h2 {
+    font-size: clamp(27px, 3vw, 36px);
+}
+
+.about-content > p {
+    max-width: 550px;
+    margin-bottom: 25px;
+
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.about-statistics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.stat-item {
+    min-height: 120px;
+    padding: 20px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border: 1px solid var(--primary-border);
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+.stat-item strong {
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.stat-item span {
+    color: var(--text-light);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   7. FOOTER
+========================================== */
+
+.site-footer {
+    padding: 60px 0 0;
+    color: #d1d5db;
+    background: var(--footer-bg);
+}
+
+.footer-container {
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
+    padding-bottom: 45px;
+
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr 1fr;
+    gap: 60px;
+}
+
+.footer-logo .logo-text {
+    color: var(--white);
+}
+
+.footer-logo .logo-text small {
+    color: #9ca3af;
+}
+
+.footer-brand > p {
+    max-width: 330px;
+    margin-top: 22px;
+
+    color: #9ca3af;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+    margin-bottom: 8px;
+    color: var(--white);
+    font-size: 15px;
+}
+
+.footer-links a,
+.footer-contact p,
+.footer-contact a {
+    color: #9ca3af;
+    font-size: 12px;
+    line-height: 1.8;
+    transition: var(--transition);
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    color: #93c5fd;
+}
+
+.footer-bottom {
+    width: min(1200px, calc(100% - 48px));
+    min-height: 70px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    border-top: 1px solid #374151;
+}
+
+.footer-bottom p,
+.footer-bottom a {
+    color: #9ca3af;
+    font-size: 11px;
+}
+
+.footer-bottom a:hover {
+    color: var(--white);
+}
+
+
+/* ==========================================
+   8. RESPONSIVE: TABLET
+========================================== */
+
+@media (max-width: 1024px) {
+    .header-container {
+        gap: 18px;
+    }
+
+    .main-nav {
+        gap: 18px;
+    }
+
+    .hero-container {
+        gap: 35px;
+        padding: 60px 0;
+    }
+
+    .hero-image {
+        height: 330px;
+    }
+
+    .benefits-section {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-image img {
+        height: 260px;
+    }
+
+    .about-section {
+        padding: 40px;
+        gap: 30px;
+    }
+
+    .footer-container {
+        gap: 35px;
+    }
+}
+
+
+/* ==========================================
+   9. RESPONSIVE: MOBILE
+========================================== */
+
+@media (max-width: 768px) {
+    .header-container {
+        width: calc(100% - 32px);
+        min-height: auto;
+        padding: 15px 0;
+
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .header-cta {
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+
+    .main-nav {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 24px;
+
+        overflow-x: auto;
+        padding: 5px 0;
+    }
+
+    .nav-link {
+        flex-shrink: 0;
+        font-size: 12px;
+    }
+
+    .hero-container {
+        width: calc(100% - 32px);
+        grid-template-columns: 1fr;
+        gap: 45px;
+        padding: 55px 0;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(36px, 9vw, 50px);
+        letter-spacing: -1.5px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-visual {
+        width: min(100%, 500px);
+        margin: 0 auto;
+    }
+
+    .hero-image {
+        height: 300px;
+    }
+
+    .label-top {
+        left: -8px;
+    }
+
+    .label-bottom {
+        right: -8px;
+    }
+
+    .benefits-section {
+        width: calc(100% - 32px);
+        gap: 22px 15px;
+    }
+
+    .benefit-item {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .benefit-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .benefit-item h3 {
+        font-size: 11px;
+    }
+
+    .benefit-item p {
+        font-size: 10px;
+    }
+
+    .products-section {
+        width: calc(100% - 32px);
+        padding: 65px 0;
+    }
+
+    .product-grid {
+        gap: 15px;
+    }
+
+    .product-image img {
+        height: 210px;
+    }
+
+    .product-info {
+        padding: 15px 12px;
+    }
+
+    .product-info h3 {
+        font-size: 12px;
+    }
+
+    .product-price {
+        font-size: 14px;
+    }
+
+    .btn-buy {
+        padding: 8px 9px;
+        font-size: 9px;
+    }
+
+    .about-section {
+        width: calc(100% - 32px);
+        margin-bottom: 60px;
+        padding: 30px 22px;
+
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-container {
+        width: calc(100% - 32px);
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 25px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+        width: calc(100% - 32px);
+    }
+}
+
+
+/* ==========================================
+   10. RESPONSIVE: SMALL MOBILE
+========================================== */
+
+@media (max-width: 420px) {
+    .header-cta {
+        gap: 5px;
+        font-size: 10px;
+    }
+
+    .logo-text {
+        font-size: 15px;
+    }
+
+    .hero-badge {
+        font-size: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .hero-benefits {
+        gap: 10px 15px;
+    }
+
+    .hero-benefits p {
+        font-size: 10px;
+    }
+
+    .benefits-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .category-nav {
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .category-link {
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .product-image img {
+        height: 155px;
+        padding: 5px;
+    }
+
+    .product-info {
+        padding: 12px 9px;
+    }
+
+    .product-category {
+        font-size: 8px;
+    }
+
+    .product-info h3 {
+        min-height: 58px;
+        font-size: 11px;
+    }
+
+    .product-description {
+        min-height: 50px;
+        margin-bottom: 12px;
+        font-size: 10px;
+    }
+
+    .product-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .product-price {
+        font-size: 14px;
+    }
+
+    .btn-buy {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .about-statistics {
+        gap: 8px;
+    }
+
+    .stat-item {
+        min-height: 100px;
+        padding: 12px 5px;
+    }
+
+    .stat-item strong {
+        font-size: 23px;
+    }
+
+    .stat-item span {
+        font-size: 10px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        padding: 18px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+
+/* ==========================================
+   11. ACCESSIBILITY & MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
